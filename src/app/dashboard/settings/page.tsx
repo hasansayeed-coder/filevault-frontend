@@ -447,7 +447,7 @@ function SessionsTab() {
 
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
-                  <p style={{ color: 'var(--text)', fontWeight: 600, fontSize: '0.875rem', truncate: true }}>
+                  <p style={{ color: 'var(--text)', fontWeight: 600, fontSize: '0.875rem' }}>
                     {session.deviceInfo || 'Unknown Device'}
                   </p>
                   {session.isCurrent && (
@@ -650,3 +650,4 @@ export default function SettingsPage() {
     </AuthGuard>
   );
 }
+

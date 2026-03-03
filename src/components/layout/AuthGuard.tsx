@@ -1,5 +1,3 @@
-'use client';
-
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
@@ -7,9 +5,10 @@ import { useAuthStore } from '@/store/authStore';
 interface AuthGuardProps {
   children: React.ReactNode;
   requireAdmin?: boolean;
+  adminOnly?: boolean;
 }
 
-export default function AuthGuard({ children, requireAdmin = false }: AuthGuardProps) {
+export default function AuthGuard({ children, requireAdmin = false, adminOnly = false }: AuthGuardProps) {
   const router = useRouter();
   const { isAuthenticated, user, rehydrate } = useAuthStore();
 
@@ -25,10 +24,10 @@ export default function AuthGuard({ children, requireAdmin = false }: AuthGuardP
         return;
       }
     }
-    if (requireAdmin && user && user.role !== 'ADMIN') {
+    if ((requireAdmin || adminOnly) && user && user.role !== 'ADMIN') {
       router.push('/dashboard');
     }
-  }, [isAuthenticated, user, requireAdmin]);
+  }, [isAuthenticated, user, requireAdmin, adminOnly]);
 
   return <>{children}</>;
 }

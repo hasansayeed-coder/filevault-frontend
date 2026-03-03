@@ -10,7 +10,6 @@ const nextConfig = {
         pathname: '/uploads/**',
       },
       {
-        // ── FIXED: also allow Railway backend images in production ──
         protocol: 'https',
         hostname: '**.railway.app',
         pathname: '/uploads/**',

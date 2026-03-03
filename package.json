@@ -21,7 +21,7 @@
     "react-dropzone": "^14.2.3",
     "react-hot-toast": "^2.4.1",
     "date-fns": "^3.0.0",
-    "lucide-react": "^0.298.0",
+    "lucide-react": "^0.575.0",
     "recharts": "^2.10.3",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.2.0"

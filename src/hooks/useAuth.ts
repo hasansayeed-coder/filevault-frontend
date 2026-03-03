@@ -78,7 +78,7 @@ export function useAuth() {
 
   const resetPassword = async (token: string, password: string) => {
     try {
-      await authApi.resetPassword(token, password);
+      await authApi.resetPassword({ token, password });
       toast.success('Password reset successfully! Please login.');
       router.push('/login');
       return { success: true };

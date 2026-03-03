@@ -159,7 +159,7 @@ export default function TrashPage() {
     }
   };
 
-  const fileTypes = ['ALL', ...Array.from(new Set(files.map((f: any) => f.fileType)))];
+  const fileTypes = ['ALL', ...Array.from(new Set(files.map((f: any) => f.fileType as string)))] as string[];
 
   return (
     <AuthGuard>

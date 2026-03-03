@@ -240,7 +240,7 @@ function ProfileTab({ overview }: { overview: any }) {
             { icon: Folder,    color: '#10b981', label: 'Folders',          value: overview?._count?.folders ?? 0 },
             { icon: Shield,    color: '#06b6d4', label: 'Active Sessions',  value: overview?.activeSessionCount ?? 0 },
           ].map(({ icon: Icon, color, label, value }) => (
-            <div key={label} style={{ padding: '14px', borderRadius: 12, background: 'var(--surface-2)', border: '1px solid var(--border)', textalignItems: 'center' }}>
+            <div key={label} style={{ padding: '14px', borderRadius: 12, background: 'var(--surface-2)', border: '1px solid var(--border)', textAlign: 'center' }}>
               <div style={{ width: 36, height: 36, borderRadius: 10, background: `${color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 8px' }}>
                 <Icon size={16} color={color} />
               </div>
@@ -432,7 +432,7 @@ function SessionsTab() {
           <div style={{ width: 28, height: 28, border: '3px solid var(--primary)', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
         </div>
       ) : sessions.length === 0 ? (
-        <div style={{ textalignItems: 'center', padding: '32px 0', color: 'var(--text-muted)', fontSize: '0.875rem' }}>
+        <div style={{ textAlign: 'center', padding: '32px 0', color: 'var(--text-muted)', fontSize: '0.875rem' }}>
           No active sessions found
         </div>
       ) : (
@@ -650,5 +650,6 @@ export default function SettingsPage() {
     </AuthGuard>
   );
 }
+
 
 

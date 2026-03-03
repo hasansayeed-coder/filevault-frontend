@@ -4,12 +4,17 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
 
-export default function AuthGuard({ children }: { children: React.ReactNode }) {
+interface AuthGuardProps {
+  children: React.ReactNode;
+  requireAdmin?: boolean;
+}
+
+export default function AuthGuard({ children, requireAdmin = false }: AuthGuardProps) {
   const router = useRouter();
-  const { isAuthenticated, rehydrate } = useAuthStore();
+  const { isAuthenticated, user, rehydrate } = useAuthStore();
 
   useEffect(() => {
-    rehydrate(); // restore auth from localStorage on every page load
+    rehydrate();
   }, []);
 
   useEffect(() => {
@@ -17,9 +22,13 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       const token = localStorage.getItem('accessToken');
       if (!token) {
         router.push('/login');
+        return;
       }
     }
-  }, [isAuthenticated]);
+    if (requireAdmin && user && user.role !== 'ADMIN') {
+      router.push('/dashboard');
+    }
+  }, [isAuthenticated, user, requireAdmin]);
 
   return <>{children}</>;
 }
